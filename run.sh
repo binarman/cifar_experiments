@@ -1,4 +1,6 @@
 #!/bin/bash
 
-file -E logs %> /dev/null || mkdir logs
-python3 "./${1}.py" | tee "logs/${1}"
+file -E logs > /dev/null || mkdir logs
+for i in "$@"; do
+  python3 "./${i}.py" | tee "logs/${i}"
+done
