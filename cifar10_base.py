@@ -16,7 +16,7 @@ import numpy as np
 import re
 import os
 
-def compute_with_activation(activation_layer):
+def compute_with_activation(activation_layer, decay = 1e-6):
   batch_size = 32
   num_classes = 10
   epochs = 100
@@ -62,7 +62,7 @@ def compute_with_activation(activation_layer):
       print(np.array(layer.output_shape[1:]).prod())
 
 # initiate RMSprop optimizer
-  opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
+  opt = keras.optimizers.rmsprop(lr=0.0001, decay=decay)
 
 # Let's train the model using RMSprop
   model.compile(loss='categorical_crossentropy',
